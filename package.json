@@ -1,0 +1,12 @@
+{
+  "name": "fullstack-challenge-satellites",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "cd packages/client && npm run dev",
+    "client": "cd packages/server && npm run dev"
+  },
+  "author": "Leonardo Luz Fachel",
+  "license": "ISC"
+}

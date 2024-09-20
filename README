@@ -1,0 +1,24 @@
+FULLSTACK CHALLENGE
+
+dotenv server setup
+    POSTGRES_HOST       -> your host // localhost
+    POSTGRES_PORT       -> your postgres port
+    POSTGRES_USER       -> your postgres user
+    POSTGRES_PASSWORD   -> your postgres password
+    POSTGRES_DB         -> postgres database name
+
+    JWT_SECRET          -> json web token password for cryptograph // any password
+
+DAY 1 - 09/19/2024
+    - Project start
+    - Basic api folder structure setup
+    - All routes implemented
+
+DAY 2 - 09/20/2024 
+    - Controller abstract class implemented
+    - Controllers implemented
+    - Service abstract class implemented
+    - Services implemented
+    - Models implemented
+    - Middlewares implemented
+    - API completed
