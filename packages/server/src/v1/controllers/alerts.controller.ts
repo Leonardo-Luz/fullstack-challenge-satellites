@@ -1,4 +1,5 @@
 import { Request, Response } from "express"
+import { v4 as uuidv4 } from "uuid";
 
 import { DAO } from "./dao.controller"
 import { Service } from "../services/alerts.service";
@@ -25,11 +26,16 @@ export class Controller implements DAO<alert, string>{
     async createHandler( req: Request<{}, {}, { toCreate: alert }> , res: Response ): Promise<Response> {
         const created = req.body.toCreate;
 
-        this.service.create( AlertModel, created );
+        const response = {
+            ...created,
+            errorId: uuidv4()
+        } as alert
+
+        this.service.create( AlertModel, response );
 
         return res.status(200).json({
             message: "Alert succefully created!",
-            body: created
+            body: response
         });
     }
 

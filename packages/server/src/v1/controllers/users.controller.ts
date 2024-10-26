@@ -1,4 +1,5 @@
 import { Request, response, Response } from "express"
+import { v4 as uuidv4 } from "uuid";
 
 import { DAO } from "./dao.controller"
 import { Service } from "../services/users.service";
@@ -24,6 +25,11 @@ export class Controller implements DAO<user, string>{
 
     async createHandler( req: Request<{}, {}, { toCreate: user }> , res: Response ): Promise<Response> {
         const created = req.body.toCreate;
+
+        const reponse = {
+            ...created,
+            userId: uuidv4()
+        } as user
 
         this.service.create( UserModel, created );
 

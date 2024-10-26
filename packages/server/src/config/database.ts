@@ -17,16 +17,6 @@ export class Database{
     }
 
     private async connectToPostgres(){
-        this.sequelize = new Sequelize({
-            database:   this.POSTGRES_DB,
-            username:   this.POSTGRES_USER,
-            password:   this.POSTGRES_PASSWORD,
-            host:       this.POSTGRES_HOST,
-            port:       this.POSTGRES_PORT,
-            dialect:    'postgres',
-            logging:    false
-        });
-
         const client = new pg.Client({
             user: this.POSTGRES_USER,
             password: this.POSTGRES_PASSWORD,
@@ -39,8 +29,20 @@ export class Database{
         client.query("CREATE DATABASE $1", [this.POSTGRES_DB]);
         client.end();
 
+        this.sequelize = new Sequelize({
+            database:   this.POSTGRES_DB,
+            username:   this.POSTGRES_USER,
+            password:   this.POSTGRES_PASSWORD,
+            host:       this.POSTGRES_HOST,
+            port:       this.POSTGRES_PORT,
+            dialect:    'postgres',
+            logging:    false
+        });
+
         await this.sequelize.authenticate()
             .then(() => console.log('Database connected!'))
             .catch( err => console.error('Unable to connect to database', err));
     }
 }
+
+// const database = new Database();
